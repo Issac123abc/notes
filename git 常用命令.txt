@@ -1,0 +1,59 @@
+1.编辑，查看
+vi readme.text(i,esc:wq)
+cat readme.txt
+
+2.提交
+
+git add readme.txt
+git commit -m ""
+
+3.查看版本与版本回退，操作记录
+git log
+git log --graph --pretty=oneline --abbrev-commit（图表形式）
+git reset -- hard head^(or commitid)
+git reflog
+
+撤消暂存区的修改
+git reset head readme.txt
+
+撤消修改
+git checkout-- readme.txt（撤消该文件的修改）
+
+4.查看修改状态与区别
+git status
+git diff(全部区别)
+git diff head -- readme.txt（指定文件区别）
+
+
+5.删除文件
+rm readme.txt
+
+6.创建SSH Key
+ssh-keygen -t rsa -C "youremail@example.com"
+
+7.本地仓库与GitHub仓库关联
+git remote add origin https://github.com/Issac123abc/testgit.git
+
+8.推送远程库
+git push -u origin master（第一次）
+git push origin master
+
+9.克隆
+git clone git@github.com:Issac123abc/testgit.git
+从远程仓库中合并到本地仓库
+git pull origin master
+
+10.分支
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+

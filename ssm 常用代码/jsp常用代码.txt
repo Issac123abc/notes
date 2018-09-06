@@ -1,0 +1,6 @@
+1.设置上下文变量（放在顶部）
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+
+2.解决get请求参数有中文乱码问题（eg:<img src="中文.jpg" />）
+在tomcat server.xml文件里添加 URIEncoding="utf-8"
+<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="utf-8"/>
