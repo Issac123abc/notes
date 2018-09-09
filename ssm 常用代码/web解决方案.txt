@@ -1,0 +1,65 @@
+1.头像上传
+a.前端(把图片转成base64加密的字符串转到后台)
+<input style="width:97%;" id="file" type="file" onchange="selectImage(this);" />
+function selectImage(file){
+	if(!file.files || !file.files[0]){
+		return;
+	}
+	var reader = new FileReader();
+	reader.onload = function(evt){
+		 $('#image').attr("src",evt.target.result);
+		 image = evt.target.result;
+		 $('#photo').val(image);
+	};
+	reader.readAsDataURL(file.files[0]);	
+}
+
+b.后台(将base64加密的字符串解密为byte[]数组保存在本地，db只保存路径)
+public String upuser(User user){
+	if(user.getPhoto().toString()!=null && user.getPhoto().toString()!=""){
+		//暂时只支持jpg格式
+		String header ="data:image/jpeg;base64,";
+		//去掉头部
+		String image = user.getPhoto().substring(header.length());
+		String path=request.getServletContext().getRealPath("/");
+			
+		BASE64Decoder decoder = new BASE64Decoder();
+		try {
+			//base64解码
+			byte[] decodedBytes = decoder.decodeBuffer(image);
+			//photo name
+			String imgName=user.getLogin_name()+"_headphoto.jpg";
+			//本地保存地址
+			String imgSaveUrl =path+"images/headphoto/"+imgName;
+			//db保存地址
+			String dbImgUrl="images/headphoto/"+imgName;
+			user.setPhoto(dbImgUrl);
+			FileOutputStream out = new FileOutputStream(imgSaveUrl);
+			out.write(decodedBytes);
+			out.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	userService.UpdateUsers(user);
+	return "redirect:/user/main";
+}
+
+2.springmvc文件上传
+a.前端
+<form enctype="multipart/form-data"></form>
+
+b.后台
+public String addMoudle( @RequestParam("images") MultipartFile file){}
+
+springmvc配置
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="defaultEncoding" value="UTF-8"></property>
+    <!-- 20M -->
+    <property name="maxUploadSize" value="20971520"></property>
+</bean>
+
