@@ -1,0 +1,36 @@
+常用对象
+1.工作簿对象
+Workbooks(n) 第n个workbook
+Workbooks("工作簿名")
+ActiveWorkbook    活动工作簿
+ThisWorkbook      代码所在工作簿
+
+2.工作表对象
+Sheets(N) 第N个工作表
+SheetN    第N个工作表
+Sheets("工作表名")
+ActiveSheet   活动工作表
+
+3.单元格对象
+Range("单元格地址或区域")
+Cells(行号，列号)
+ActiveCell     活动单元格
+Selection      选择区域
+
+4.输入语句
+Debug.Print ""
+
+5.查找单元格
+Dim s As String
+s = Cells.Find("在职人员小计").Address
+
+6.锁定指定区域
+Cells.Locked = False
+Cells.FormulaHidden = False
+Union([a1:n3], [a4:e35]).Select
+Selection.Locked = True
+Selection.FormulaHidden = True
+ActiveSheet.Protect ("12369874"), DrawingObjects:=True, Contents:=True, Scenarios:=True
+
+
+

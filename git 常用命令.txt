@@ -40,8 +40,6 @@ git push origin master
 
 9.克隆
 git clone git@github.com:Issac123abc/testgit.git
-从远程仓库中合并到本地仓库
-git pull origin master
 
 10.分支
 查看分支：git branch
@@ -56,4 +54,19 @@ git pull origin master
 
 删除分支：git branch -d <name>
 
+11.配置config
+git config --global user.name "John Doe"
+git config --global user.email "johndoe@example.com"
 
+
+12.取回远程主机某个分支的更新，再与本地的指定分支合并
+git pull origin master
+pull之前先提交或保存本地修改
+git stash
+git pull origin master
+git stash pop stash@{0}
+
+13.强制更新，覆盖本地
+git fetch --all  
+git reset --hard origin/master 
+git pull
