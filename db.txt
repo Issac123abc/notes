@@ -1,14 +1,9 @@
-CREATE TABLE `permissions` (
+CREATE TABLE `info` (
   `id` varchar(50) NOT NULL,
-  `permission` varchar(100) DEFAULT NULL,
-  `role_name` varchar(45) DEFAULT NULL,
+  `user_id` varchar(50) DEFAULT NULL,
+  `content` varchar(1000) DEFAULT NULL,
+  `images` varchar(2000) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-CREATE TABLE `roles` (
-  `id` varchar(50) NOT NULL,
-  `role_name` varchar(45) DEFAULT NULL,
-  `username` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+SELECT * FROM community.moudle;
