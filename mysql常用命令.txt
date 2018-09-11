@@ -1,0 +1,22 @@
+1.show databases;
+
+2.select database();    --
+select version();
+select user();
+
+3.use test;
+
+4.create database test default character set 'UTF8';
+
+5.show create database test    --查看数据库编码方式
+
+6.alter database test default character set 'UTF8';
+
+
+7.drop database test;       --删除数据库
+
+8.delimiter //(;)     --结束符
+
+9.set @val=1;       --设置变量值
+
+10.select @val;     --查询变量值
