@@ -1,22 +1,66 @@
+常用命令
+1.cmd
+mysql -uroot -p
+
+2.git bash
+winpty -uroot -p
+
+3.use test;
+
+4.delimiter //(;)     --结束符
+
+5.set @val=1;       --设置变量值
+
+6.select @val;     --查询变量值
+
+
+增
+1.create database test default character set 'UTF8';
+
+2.create table
+CREATE TABLE user(
+
+id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT 'id'
+username VARCHAR(20),
+
+password CHAR(12),
+
+sex ENUM('男','女','保密')
+
+)ENGINE=INNODB CHARSET=UTF8;
+
+CREATE TABLE user(
+
+)ENGINE=INNODB CHARSET=UTF8;
+
+完整性约束 
+UNSINGED 非负数
+AUTO_INCREMENT(一个表只有一个，配合索引使用) 
+DEFAULT 
+NOT NULL
+UNIQUE  不包括NULL
+FOREIGN KEY
+ZEROFILL  零填充
+COMMENT  '注释'
+
+删
+1.drop database test;       --删除数据库
+
+2.drop table test;      
+
+
+改
+1.alter database test default character set 'UTF8';    --修改数据库编码方式
+
+
+查
 1.show databases;
+show create database test    --查看数据库详细信息
+show tables;
+show create table test;      --查看表信息
+desc test;                   --查看表结构
+show warnings;
 
 2.select database();    --
 select version();
 select user();
-
-3.use test;
-
-4.create database test default character set 'UTF8';
-
-5.show create database test    --查看数据库编码方式
-
-6.alter database test default character set 'UTF8';
-
-
-7.drop database test;       --删除数据库
-
-8.delimiter //(;)     --结束符
-
-9.set @val=1;       --设置变量值
-
-10.select @val;     --查询变量值
