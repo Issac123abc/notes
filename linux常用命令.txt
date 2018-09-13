@@ -1,0 +1,6 @@
+df
+pwd
+cd d:
+ls
+ls -a
+ll
