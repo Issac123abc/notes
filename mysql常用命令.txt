@@ -52,6 +52,25 @@ COMMENT  '注释'
 改
 1.alter database test default character set 'UTF8';    --修改数据库编码方式
 
+2.alter table test          --修改，删除字段
+add test1 char(20),
+add test2 tinyint（1) not null default 0,
+drop test3;
+
+3.alter table test
+alter test1 set default 10 fitst/after col;    -- 修改默认值
+
+alter table test
+alter test1 drop default;      --删除默认值
+
+4.modify              --修改属性
+alter table test
+modify test varchar(10);
+
+5.change	      --修改字段名与属性
+alter table test
+change test tt varchar(10);
+
 
 查
 1.show databases;
