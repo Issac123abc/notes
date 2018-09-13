@@ -5,6 +5,9 @@ mysql -uroot -p
 2.git bash
 winpty -uroot -p
 
+退出
+\c
+
 3.use test;
 
 4.delimiter //(;)     --结束符
@@ -13,6 +16,7 @@ winpty -uroot -p
 
 6.select @val;     --查询变量值
 
+7.show table status like 'users'\G 	--	查看表状态（大小，engine等）
 
 增
 1.create database test default character set 'UTF8';
@@ -71,6 +75,14 @@ modify test varchar(10);
 alter table test
 change test tt varchar(10);
 
+6.alter table test    --添加，删除主键
+add primary key(id);/drop primary key;
+
+7.alter table test
+add unique key(index_name);/drop index index_name
+
+8.alter table test	--修改表名
+rename test1;
 
 查
 1.show databases;
