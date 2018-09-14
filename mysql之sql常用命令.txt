@@ -1,0 +1,78 @@
+增
+insert into table_name values(...),(...),(...);
+insert into table_name(...) values(...),(...),(...);
+insert into table_name[()] select ... from table_name;
+
+删
+delete from user where...			--部分删除
+delete from user;				--全部删除
+alter table user auto_increment=1;		--设置auto_increment开始值
+truncate user;					--删除所有记录并重置auto_increment值
+
+改
+update user set age=age+10,password=null/default where ...; 		--部分更新
+update user set age=age-10,password=null;				--全部记录更新
+
+
+单表查询
+select [distinct] {*|field1,field2,...|expression...} from table_name[, view_name]
+[where condition]
+[group by field [having group_condition]]
+[order by field [ASC|DESC]]
+[limit 偏移量，记录数];//偏移量为0时可以省略
+
+where
+1. is null	is not null
+
+2.between  1 and 2	not between 1 and 2
+
+3.in ()		not in ()
+
+4.like/not like 通配符  % --任意个字符		_ -- 1个字符
+like 'test' 等价于 ='test'
+like '%test%'	like '%test'	like 'test%'	包含test
+like '张__'	like '_丰'
+
+5.group by   --可以对任意字段分组，不一定select中的字段(oracle中)
+group_concat() 函数
+select group_concat(username),age,email from user group by age;
+
+聚合函数
+count
+count(*)		--统计所有记录数（包括有null值的记录）
+count(username)		--统计该字段不包含null值的记录数
+
+sum	max	min	avg
+with rollup	--总计
+
+having count(*)>2	--二次筛选，where是第一次筛选
+
+6.order by
+order by id asc,age desc
+order by rand();	--随机排序
+
+7.limit
+limit n			--前几条
+limit offset,pagesize	--从第offset开始，显示pagesize条记录
+eg:
+select * from user limit 5;
+select * from user limit 0,5;		--第一页
+select * from user limit (2-1)*5,5	--第二页
+
+多表查询
+1.笛卡尔积
+select e.id,e.username,e.age,d.depName from emp e,dep d;
+
+2.内连接
+select * from emp e inner join/join dep d on ....;  	--（显示两表的交集，不匹配的不显示）
+
+3.外连接
+左外连接--select * from emp e left join dep d on...;	--(以左表为基准，右表没有的记录以null显示）
+右外连接--select * from emp e right join dep d on...;	--(以右表为基准，左表没有的记录以null显示）
+
+
+
+
+
+
+

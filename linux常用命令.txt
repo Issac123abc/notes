@@ -4,3 +4,8 @@ cd d:
 ls
 ls -a
 ll
+
+vi
+i
+esc+:wq      :w      :q!
+
