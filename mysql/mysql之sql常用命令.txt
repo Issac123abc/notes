@@ -59,6 +59,9 @@ select * from user limit 5;
 select * from user limit 0,5;		--µÚÒ»Ò³
 select * from user limit (2-1)*5,5	--µÚ¶þÒ³
 
+8.distinct	--È¥µôÖØ¸´Öµ
+select distinct(username) from user;
+
 ¶à±í²éÑ¯
 1.µÑ¿¨¶û»ý
 select e.id,e.username,e.age,d.depName from emp e,dep d;
@@ -70,7 +73,17 @@ select * from emp e inner join/join dep d on ....;  	--£¨ÏÔÊ¾Á½±íµÄ½»¼¯£¬²»Æ¥Åäµ
 ×óÍâÁ¬½Ó--select * from emp e left join dep d on...;	--(ÒÔ×ó±íÎª»ù×¼£¬ÓÒ±íÃ»ÓÐµÄ¼ÇÂ¼ÒÔnullÏÔÊ¾£©
 ÓÒÍâÁ¬½Ó--select * from emp e right join dep d on...;	--(ÒÔÓÒ±íÎª»ù×¼£¬×ó±íÃ»ÓÐµÄ¼ÇÂ¼ÒÔnullÏÔÊ¾£©
 
+Ìõ¼þÉ¸Ñ¡Ë³Ðò on>where>having
 
+
+×Ó²éÑ¯
+
+ÁªºÏ²éÑ¯
+union	
+select * from user1 union select * from user2;		--½«Á½¸ö±íµÄ¼ÇÂ¼ºÏ²¢µ«²»°üÀ¨ÖØ¸´Öµ
+
+union all	
+select * from user1 union select * from user2;		--½«Á½¸ö±íµÄ¼ÇÂ¼È«²¿ºÏ²¢
 
 
 

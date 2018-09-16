@@ -18,6 +18,8 @@ winpty -uroot -p
 
 7.show table status like 'users'\G 	--	查看表状态（大小，engine等）
 
+8.show index from user;			--查看索引
+
 增
 1.create database test default character set 'UTF8';
 
@@ -33,9 +35,12 @@ sex ENUM('男','女','保密')
 
 )ENGINE=INNODB CHARSET=UTF8;
 
+
 CREATE TABLE user(
 
 )ENGINE=INNODB CHARSET=UTF8;
+
+create table user2 like user1;		--user2表结构跟user1一样
 
 完整性约束 
 UNSINGED 非负数
@@ -84,6 +89,7 @@ add unique key(index_name);/drop index index_name
 8.alter table test	--修改表名
 rename test1;
 
+
 查
 1.show databases;
 show create database test    --查看数据库详细信息
@@ -95,3 +101,45 @@ show warnings;
 2.select database();    --
 select version();
 select user();
+
+
+外键（默认是禁止删除或更新父表中的记录，也可以设置成级联属性cascade）
+1.foreign key(col_name) references table_name(id)
+子表外键必须关联主表主键
+关联字段类型要一致，包括unsigned
+如果子表外键字段没有索引，会自动创建一个普通索引
+
+2.动态添加，删除外键
+alter table news
+add [constraint 外键名] foreign key(cate_id) references news_cate(id);
+
+alter table news
+drop foreign key fk_name;		--（从show create table news中查看外键名）
+
+
+索引
+--注意，索引失效情况：1.使用or	2.like+前面有%
+
+1.添加普通索引
+alter table user
+add index index_name(col_name);
+
+2.唯一索引
+alter table user
+add unique index index_name(col_name);
+
+3.全文索引(用于char、varchar、text类型的字段)	
+alter table user
+add fulltext index index_name(col_name);
+
+4.删除索引
+drop index index_name on table_name;
+
+5.查看索引
+show index from user;
+
+6.查看select 语句是否使用索引
+explain select * from user where age=18;
+
+
+
