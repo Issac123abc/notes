@@ -8,13 +8,22 @@ winpty -uroot -p
 退出
 \c
 
+= 	mysql会默认是比较运算符，
+:=	才是赋值运算符
+
 3.use test;
 
 4.delimiter //(;)     --结束符
 
-5.set @val=1;       --设置变量值
+系统变量与自定义变量
+系统变量:@@
+自定义变量:@
+5.set @val=1;       --设置自定义变量值
 
-6.select @val;     --查询变量值
+6.select @val;     --查询自定义变量值
+
+select @name:=name from user;
+select name,age from user where id=2 into @name,@age;
 
 7.show table status like 'users'\G 	--	查看表状态（大小，engine等）
 
@@ -140,6 +149,68 @@ show index from user;
 
 6.查看select 语句是否使用索引
 explain select * from user where age=18;
+
+
+视图		--主要作用是复用，只有结构定义，不保存真实数据，即是只有.frm文件，没有.idb文件
+1.创建视图
+create view 视图名称 as select语句	--可以是普通查询、连接查询、联合查询、子查询
+
+2.修改视图
+alter view 视图名称 as 新的select 语句
+
+3.删除视图
+drop view 视图名称
+
+4.向视图插入数据	--只能向单表视图插入数据
+insert into 视图名称 values();
+
+5.删除视图数据		--只能删除单表视图
+
+6.更新视图数据		--只能修改视图可以查到的数据，并且不能修改后原来的记录查不到
+
+7.视图算法
+Undefined	
+
+Temptable	--先执行视图select语句条件再执行 as select语句条件
+
+Merge		--先合并再执行一次
+
+用先后顺序的用Temptable算法，其它用默认
+
+create algorithm=算法名称 view 视图名称 as select 语句
+
+
+8.事务安全（要么都成功，要么都失败）
+事务：一系列连续的操作
+a.start transaction;		--开启事务
+
+b.commit transaction;		--提交事务
+
+c.rollback;			--回滚事务到开始事务前
+
+回滚点--savepoint
+savepoint sp;
+
+rollback to sp;			--回滚到回滚点之前
+
+事务四大特性:ACID
+A:原子性(Atomicity)		--事务是数据库的逻辑工作单位，事务中包括的诸操作要么全做，要么全不做。
+B:一致性(Consistency)		--事务执行的结果必须是使数据库从一个一致性状态变到另一个一致性状态。
+C:隔离性(Isolation)		--一个事务的执行不能被其他事务干扰。
+D:持续性/永久性(Durability)	--一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。
+
+
+锁机制：innodb默认是行锁，但如果在事务操作过程中，没有使用到索引，那么系统会由自动全表检索数据，自动升级为表锁。
+
+隔离性用到锁机制，一个事务操作数据时会上锁（行锁或表锁），另一个事务要等待锁释放才能更改，commit和rollback都可以释放锁。
+
+
+
+
+
+
+
+
 
 
 
