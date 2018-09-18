@@ -9,3 +9,4 @@ vi
 i
 esc+:wq      :w      :q!
 
+cat 
