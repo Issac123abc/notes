@@ -1,0 +1,17 @@
+1. 前端
+jsp页面
+jquery
+框架layui
+
+
+2.后台
+技术框架：spring+sprimgMVC+mybatis
+验证，授权框架：shiro
+项目工具：maven
+版本工具：git
+web服务器：tomcat
+服务器：linux
+缓存：
+
+3.数据库
+mysql

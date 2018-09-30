@@ -1,0 +1,32 @@
+1.SimpledDateFormat
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+String dateStr=sdf.format(new Date());
+Date now=sdf.parse(dateStr);
+
+2.Calendar 可以返回年、月、日、时、分、秒 星期几、第几周
+主要方法
+set(field,int)
+setTime(date)
+get(field)
+add(field,int)		//整体相加减
+roll(field,int)		//对应域相加减，不影响其它域
+
+public int getMonthTotalDays(int year, int month){
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.YEAR,year);
+		c.set(Calendar.MONDAY,month);		//从0开始，0代表1月
+		c.set(Calendar.DATE,1);
+		c.roll(Calendar.DATE, -1);
+		int n=c.get(Calendar.DATE);
+		return n;
+	}
+
+public boolean isWeekend(Date date){
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(date);
+		if(cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
+			return true;
+		}else{
+			return false;
+		}
+	}
