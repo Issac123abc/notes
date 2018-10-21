@@ -1,0 +1,6 @@
+1.×¢½â
+@ConfigurationProperties(prefix = "com.example.demo")
+
+@value("${}")
+
+@PropertySource(value= {"classpath:user.properties",""})

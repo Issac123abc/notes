@@ -1,0 +1,35 @@
+df
+pwd
+cd d:
+ls
+ls -a
+ll
+
+vi
+i
+esc+:wq      :w      :q!
+
+cat 
+
+
+vim
+1.正常模式
+yy 5yy	复制
+p	粘贴
+dd 5dd	删除
+G	末行
+gg	首行
+
+2.插入模式
+
+
+3.命令模式
+:wq q q!
+/key	查找	n下一个
+:set nu/nonu	显示行号
+
+关机、重启、断开连接
+halt	--立即关机
+reboot	--重启
+sync	--同步内存数据到磁盘
+logout	--断开连接

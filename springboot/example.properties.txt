@@ -1,0 +1,2 @@
+example.name=zhangsan${random.value}
+example.user=${user.name:zhanglin}
