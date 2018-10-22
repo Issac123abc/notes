@@ -1,15 +1,48 @@
-df
+ctrl+c	--退出错误指令
+
+查看文件或文件夹
+1.ls	ls -a	ll
+
+查看目录路径
 pwd
-cd d:
-ls
-ls -a
-ll
 
-vi
-i
-esc+:wq      :w      :q!
+查看磁盘使用情况
+df -h
 
-cat 
+创建、删除空文件夹
+mkdir 名
+rmdir 名	--只能删除空文件夹
+
+创建空文件
+touch hello.txt hello1.txt	--可以创建多个文件，空格隔开
+
+删除
+rm -rf 文件名或者目录	-r代表递归	-f表示强制，不提示
+
+拷贝
+cp 文件名 目录
+cp -r 文件夹 目录
+\cp	强制覆盖
+
+移动（剪切）
+mv a.txt b.txt		--表示文件或文件夹重命名，
+mv a.txt test/		--表示移动文件到指定目录
+
+浏览文件
+cat -n 文件名 | more	--n表示行号，more表示分页，空格翻页
+more	vi全屏显示
+less	动态加载内容，效率高
+head 文件名		显示前10行
+head -n 5 文件名	显示前5行
+tail 文件名		显示最后10行
+tail -n 文件名		显示最后5行
+tail -f 文件名		实时监控文件变化
+
+覆盖写入与追加（>、>>）
+ll > a.txt			ll >> a.txt
+cat a.txt > b.txt		cat a.txt >> b.txt
+echo "hello echo" > c.txt	echo "hello echo" >> c.txt
+cal > d.txt			cal >> d.txt
 
 
 vim
@@ -22,14 +55,28 @@ gg	首行
 
 2.插入模式
 
-
 3.命令模式
 :wq q q!
 /key	查找	n下一个
 :set nu/nonu	显示行号
+
+
 
 关机、重启、断开连接
 halt	--立即关机
 reboot	--重启
 sync	--同步内存数据到磁盘
 logout	--断开连接
+
+用户管理
+1.useradd -g 组名 用户名		--创建用户
+2.passwd test				--设置密码
+3.usermod -g 组名 用户名		--修改用户组
+4.userdel test				--删除用户但保留家目录
+5.userdel -r test			--删除用户并删除家目录
+6.id 用户名				--查看用户信息
+7.su - test				--切换用户，高权限向低权限切换不需要密码，反之则需要
+8.exit					--退出当前用户
+
+/etc/passwd				--用户信息配置文件目录
+/etc/group				--用户组信息配置文件目录
