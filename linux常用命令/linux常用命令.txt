@@ -44,6 +44,34 @@ cat a.txt > b.txt		cat a.txt >> b.txt
 echo "hello echo" > c.txt	echo "hello echo" >> c.txt
 cal > d.txt			cal >> d.txt
 
+添加软链接、历史指令
+ln -s 目录或文件 软链接名称
+rm -rf 软链接名称
+history		--本用户所有历史指令
+history 10	--最近10指令
+!178		--执行第178条指令
+
+时间与日历
+date
+date -s 日期时间
+cal
+cal 2019
+
+查找
+find 目录 -name 文件名		--按文件名查找
+find 目录 -user 用户名		--按用户名查找
+find 目录 -size 20m		--按文件大小查找（+大于，-小于，没符号=）
+cat hello.java | grep -ni hello	--n表示显示行号，i表示忽略大小写
+
+压缩与解压
+zip -r 压缩文件名 目录		--将目录下文件压缩成zip文件
+zip 压缩文件名 a.txt b.txt	--将多个文件添加到压缩文件
+unzip 压缩文件名		--解压到当前目录
+unzip -d 目录 压缩文件名	--解压到指定目录
+
+tar -zcvf 压缩文件名 目录或多个文件	--压缩
+tar -zxvf 压缩文件名			--解压到当前目录
+tar -zxvf 压缩文件名 -C 目录		--解压到指定目录
 
 vim
 1.正常模式
@@ -59,7 +87,6 @@ gg	首行
 :wq q q!
 /key	查找	n下一个
 :set nu/nonu	显示行号
-
 
 
 关机、重启、断开连接
@@ -78,5 +105,26 @@ logout	--断开连接
 7.su - test				--切换用户，高权限向低权限切换不需要密码，反之则需要
 8.exit					--退出当前用户
 
-/etc/passwd				--用户信息配置文件目录
-/etc/group				--用户组信息配置文件目录
+组管理
+1.groupadd 组名
+2.groupdel 组名
+
+cat /etc/group 		--查看用户组
+cat /etc/passwd 	--查看用户信息
+
+权限
+修改文件用户组
+1.chown 用户名 文件或目录
+2.chgrp 组名 文件或目录
+
+文件类型
+-普通文件
+-d目录
+-b硬盘
+-c字符文件（鼠标，键盘）
+-l 软链接
+
+
+
+
+
