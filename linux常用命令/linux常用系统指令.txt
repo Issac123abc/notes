@@ -1,4 +1,6 @@
 ctrl+c	--退出错误指令
+whoami
+logout
 
 查看文件或文件夹
 1.ls	ls -a	ll
@@ -114,8 +116,16 @@ cat /etc/passwd 	--查看用户信息
 
 权限
 修改文件用户组
-1.chown 用户名 文件或目录
-2.chgrp 组名 文件或目录
+1.chown 用户名 文件		--文件
+2.chown -R 用户名 目录 		--目录 -R递归
+3.chgrp 组名 文件
+4.chgrp -R 组名 目录
+
+修改文件或目录权限
+1.chmod u=rwx,g=r,o=r 文件或目录名	-r:4,-w:2,-x:1
+chmod 744 文件名或目录名
+
+2.chmod u-x,g+w,o+x 文件或目录名	-表示减去，+表示增加
 
 文件类型
 -普通文件
@@ -123,6 +133,22 @@ cat /etc/passwd 	--查看用户信息
 -b硬盘
 -c字符文件（鼠标，键盘）
 -l 软链接
+
+定时任务
+crontab -e	--编辑定时任务
+crontab -l	--显示定时任务
+crontab -r	--终止定时任务
+
+例子：每天0时0分追加日期到date.txt文件
+1.touch date.txt
+2.vim mytask1.sh
+date >> date.txt
+3.chmod 744 mytask1.sh
+4.crontab -e
+0 0 * * * /root/mytask1.sh
+
+
+
 
 
 
