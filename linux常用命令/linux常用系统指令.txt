@@ -147,6 +147,24 @@ date >> date.txt
 4.crontab -e
 0 0 * * * /root/mytask1.sh
 
+查看树状文件结构图
+tree
+yum install tree
+
+查看进程
+ps -aux | more
+ps -aux | grep sshd	--查看远程登录
+pstree -p		--查看进程树
+top
+
+
+终止进程
+kill id
+kill -9 id	--强制终止
+kill sshd id	--禁止远程登录服务
+
+查看服务
+ll /etc/init.d
 
 
 
