@@ -71,7 +71,7 @@ zip 压缩文件名 a.txt b.txt	--将多个文件添加到压缩文件
 unzip 压缩文件名		--解压到当前目录
 unzip -d 目录 压缩文件名	--解压到指定目录
 
-tar -zcvf 压缩文件名 目录或多个文件	--压缩
+tar -zcvf t.tar.gz 目录或多个文件	--压缩
 tar -zxvf 压缩文件名			--解压到当前目录
 tar -zxvf 压缩文件名 -C 目录		--解压到指定目录
 
@@ -165,6 +165,22 @@ kill sshd id	--禁止远程登录服务
 
 查看服务
 ll /etc/init.d
+
+
+查看已安装的软件、卸载
+1.rpm -qa | grep jdk
+2.rpm -e 名称
+3.rpm -e 名称 --nodeps
+4.rpm -qa | grep jdk | xargs rpm -e --nodeps 批量卸载
+
+yum安装jdk
+yum list java-1.8*
+yum install java-1.8.0-openjdk* -y
+
+查看安装路径
+which java
+which firefox
+
 
 
 
