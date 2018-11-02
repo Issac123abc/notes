@@ -1,0 +1,2 @@
+1.从本地传输文件到远程linux(放在用户home目录下)
+put D:/baas_app-0.0.1-SNAPSHOT.jar
