@@ -42,3 +42,10 @@ public void play(Shape s){
 3.Shape s = new Circle();
 4.ShapeInterface s = new Circle();
 
+
+接口与抽象类，接口是一种更抽象的类，接口与抽象类都不能实例化
+1.接口是常量与抽象方法的集合
+2.抽象类可以有变量与实体方法
+3.抽象类可以实体接口，而且不用实现全部方法，非抽象类必须要实现全部接口
+
+
