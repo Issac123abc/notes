@@ -70,6 +70,7 @@ git stash pop stash@{0}
 git fetch --all  
 git reset --hard origin/master 
 git pull
+git checkout --theirs ./文件名
 
 14.放弃本地所有修改
 git checkout .
