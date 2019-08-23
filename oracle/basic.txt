@@ -1,0 +1,33 @@
+一、数据类型
+1.字符类型
+char(2)		--定长,不足自动用空格填满,最大2000字节
+varchar(2)	--变长,不足不会填充空格，最大4000字节
+
+2.数字类型
+NUMBER( p,s ) p表示精度（总长度） s表示小数位置且四舍五入
+
+NUMBER(10,3) 10是总长度，3是小数位数的长度
+123.456
+123.4567 ：将存储为123.457
+12345678.899 ：精度超长了，10是总长度，3是小数位， 整数位为10-3=7位
+NUMBER(10)==NUMBER(10,0) java.lang.Integer
+NUMBER(19)==NUMBER(19,0) java.lang.Long
+
+3.日期类型
+date		--
+timestamp	--可以包含，小数秒
+
+4.二进制及大文本类型
+blob	--适合图片，文件等
+clob	--适合大文本，字符
+
+
+建表
+create table student(
+  id varchar(32) not null,
+  name varchar(50),
+  age number(3),
+  gender number(1)
+);
+comment on table student is '学生表';
+comment on column student.gender is '性别';

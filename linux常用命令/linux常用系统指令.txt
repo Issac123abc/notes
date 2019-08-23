@@ -67,16 +67,14 @@ cat hello.java | grep -ni hello	--n表示显示行号，i表示忽略大小写
 
 压缩与解压
 zip -r 压缩文件名 目录		--将目录下文件压缩成zip文件
-zip 压缩文件名 a.txt b.txt	--将多个文件添加到压缩文件
 unzip 压缩文件名		--解压到当前目录
-unzip -d 目录 压缩文件名	--解压到指定目录
 
 tar -zcvf t.tar.gz 目录或多个文件	--压缩
-tar -zxvf 压缩文件名			--解压到当前目录
-tar -zxvf 压缩文件名 -C 目录		--解压到指定目录
+tar -zxvf 文件名			--解压到当前目录
+tar -zxvf 文件名 -C 目录		--解压到指定目录
 
 vim
-1.正常模式
+1.命令模式
 yy 5yy	复制
 p	粘贴
 dd 5dd	删除
@@ -85,7 +83,7 @@ gg	首行
 
 2.插入模式
 
-3.命令模式
+3.末行模式
 :wq q q!
 /key	查找	n下一个
 :set nu/nonu	显示行号
@@ -103,7 +101,7 @@ logout	--断开连接
 3.usermod -g 组名 用户名		--修改用户组
 4.userdel test				--删除用户但保留家目录
 5.userdel -r test			--删除用户并删除家目录
-6.id 用户名				--查看用户信息
+6.id 用户名				--查看用户信息，所在组
 7.su - test				--切换用户，高权限向低权限切换不需要密码，反之则需要
 8.exit					--退出当前用户
 
@@ -154,14 +152,11 @@ yum install tree
 查看进程
 ps -aux | more
 ps -aux | grep sshd	--查看远程登录
-pstree -p		--查看进程树
-top
 
 
 终止进程
-kill id
 kill -9 id	--强制终止
-kill sshd id	--禁止远程登录服务
+
 
 查看服务
 ll /etc/init.d
@@ -169,9 +164,12 @@ ll /etc/init.d
 
 查看已安装的软件、卸载
 1.rpm -qa | grep jdk
+
 2.rpm -e 名称
 3.rpm -e 名称 --nodeps
-4.rpm -qa | grep jdk | xargs rpm -e --nodeps 批量卸载
+
+yum list installed
+
 
 yum安装jdk
 yum list java-1.8*
