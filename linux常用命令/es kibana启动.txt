@@ -1,0 +1,5 @@
+--es后台启动
+bin/el... -d
+
+--kibana后台启动
+bin/kibana &
