@@ -1,0 +1,8 @@
+1.docker启动
+systemctl start docker
+
+2.docker 关闭
+systemctl stop docker
+
+3.启动redis
+docker run -p 6379:6379 --name redis -v /root/redis/redis/conf/redis.conf:/docker/redis/redis.conf -v /root/redis/redis/data:/docker/redis/data -d redis redis-server /docker/redis/redis.conf --appendonly yes
