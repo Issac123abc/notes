@@ -4,5 +4,46 @@ systemctl start docker
 2.docker 关闭
 systemctl stop docker
 
-3.启动redis
+3.启动新的redis容器
 docker run -p 6379:6379 --name redis -v /root/redis/redis/conf/redis.conf:/docker/redis/redis.conf -v /root/redis/redis/data:/docker/redis/data -d redis redis-server /docker/redis/redis.conf --appendonly yes
+
+4.centos7 查看端口
+netstat -lnpt
+
+5.启动新的zookeeper
+docker run -d --name zookeeper  -p 2181:2181 zookeeper
+
+6.启动新的kafka
+docker run -d --name kafka -p 9092:9092 \
+--link zookeeper:zookeeper \
+--env KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 \
+--env KAFKA_ADVERTISED_HOST_NAME=192.168.1.167 \
+--env KAFKA_ADVERTISED_PORT=9092 \
+-t wurstmeister/kafka
+
+中间两个参数的192.168.218.131改为宿主机器的IP地址，如果不这么设置，可能会导致在别的机器上访问不到kafka
+
+bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test
+
+7.查看运行的容器
+docker ps
+
+8.查看所有容器
+docker ps -a
+
+9.查看所有镜象
+docker images
+
+10.启动已有的容器
+docker start 容器名/容器id
+
+11.停止容器
+docker stop container-name/container-id
+
+12.删除容器
+docker rm container-id 删除容器前，必须先停止容器运行，根据 容器 id 进行删除
+
+13.删除镜象
+docker rmi image-id
+
+
