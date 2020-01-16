@@ -7,7 +7,7 @@ spring:
     
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.122.130:3306/reading?characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.33.130:3306/reading?characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     dbcp2:                                          # 进行数据库连接池的配置

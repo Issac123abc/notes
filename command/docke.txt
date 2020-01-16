@@ -1,19 +1,33 @@
-1.docker启动
-systemctl start docker
+﻿# vi /etc/docker/daemon.json
+{
+    "registry-mirrors": ["https://registry.docker-cn.com"]
+}
+systemctl restart docker
+#http://hub-mirror.c.163.com
+#https://cr.console.aliyun.com/
 
-2.docker 关闭
+
+systemctl start docker
 systemctl stop docker
 
-3.启动新的redis容器
+docker images
+docker ps
+docker ps -a
+
+docker start container-name/container-id
+docker stop container-name/container-id
+docker rm container-id  #先停止
+docker rmi image-id
+
+
 docker run -p 6379:6379 --name redis -v /root/redis/redis/conf/redis.conf:/docker/redis/redis.conf -v /root/redis/redis/data:/docker/redis/data -d redis redis-server /docker/redis/redis.conf --appendonly yes
 
-4.centos7 查看端口
 netstat -lnpt
 
-5.启动新的zookeeper
+
+#kafka
 docker run -d --name zookeeper  -p 2181:2181 zookeeper
 
-6.启动新的kafka
 docker run -d --name kafka -p 9092:9092 \
 --link zookeeper:zookeeper \
 --env KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 \
@@ -25,25 +39,14 @@ docker run -d --name kafka -p 9092:9092 \
 
 bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test
 
-7.查看运行的容器
-docker ps
 
-8.查看所有容器
-docker ps -a
-
-9.查看所有镜象
-docker images
-
-10.启动已有的容器
-docker start 容器名/容器id
-
-11.停止容器
-docker stop container-name/container-id
-
-12.删除容器
-docker rm container-id 删除容器前，必须先停止容器运行，根据 容器 id 进行删除
-
-13.删除镜象
-docker rmi image-id
-
+#mysql
+docker pull mysql
+docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+#最新版mysql navicat 密码2059错误
+docker exec -it mysql bash
+mysql -uroot -p123456
+alter user 'root'@'%' identified by '123456' password expire never;
+alter user 'root'@'%' identified with mysql_native_password by '123456';
+flush privileges;
 

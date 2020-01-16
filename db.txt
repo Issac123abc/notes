@@ -1,9 +1,0 @@
-CREATE TABLE `info` (
-  `id` varchar(50) NOT NULL,
-  `user_id` varchar(50) DEFAULT NULL,
-  `content` varchar(1000) DEFAULT NULL,
-  `images` varchar(2000) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-SELECT * FROM community.moudle;
