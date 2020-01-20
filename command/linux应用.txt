@@ -1,0 +1,28 @@
+#redis
+daemonize yes
+port
+pidfile: /var/run/redis/redis_6380.pid
+logfile: /var/log/redis/redis_6380.log
+
+多实例
+cp redis.conf redis6380.conf
+
+cd redis/src 或 redis/bin
+./redis-server
+./redis-server redis.conf
+
+
+
+
+
+
+
+
+
+
+
+#es后台启动
+bin/el... -d
+
+#kibana后台启动
+bin/kibana &

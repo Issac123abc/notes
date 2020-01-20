@@ -1,0 +1,15 @@
+1.进入redis.conf所在目录
+
+2.复制一份配置文件
+cp redis.conf redis6380.conf
+
+3.修改配置
+daemonize yes
+port 6380
+pidfile /var/run/redis/redis6380.pid
+logfile /var/log/redis/redis6380.log
+
+4.进入redis目录下的src或bin（有的是src，有的是bin，可能版本不一样）
+
+5.以配置文件启动另外一个实例
+./redis-server ../redis6380.conf
