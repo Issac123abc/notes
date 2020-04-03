@@ -1,0 +1,171 @@
+ctrl+c
+whoami
+logout
+
+ls	ls -a	ll
+
+pwd
+
+df -h
+
+mkdir
+rmdir 
+
+touch hello.txt hello1.txt
+
+rm -rf 文件名或者目录	-r代表递归	-f表示强制，不提示
+
+cp 文件名 目录
+cp -r 文件夹 目录
+
+mv a.txt b.txt		--表示文件或文件夹重命名，
+mv a.txt test/		--表示移动文件到指定目录
+
+cat -n 文件名 | more
+more	vi全屏显示
+less	动态加载内容，效率高
+head 文件名		显示前10行
+head -n 5 文件名	显示前5行
+tail 文件名		显示最后10行
+tail -n 文件名		显示最后5行
+tail -f 文件名		实时监控文件变化
+
+覆盖写入与追加（>、>>）
+ll > a.txt			ll >> a.txt
+cat a.txt > b.txt		cat a.txt >> b.txt
+echo "hello echo" > c.txt	echo "hello echo" >> c.txt
+cal > d.txt			cal >> d.txt
+
+添加软链接、历史指令
+ln -s 目录或文件 软链接名称
+rm -rf 软链接名称
+history		--本用户所有历史指令
+history 10	--最近10指令
+!178		--执行第178条指令
+
+date
+date -s 日期时间
+cal
+cal 2019
+
+查找
+find 目录 -name 文件名		--按文件名查找
+find 目录 -user 用户名		--按用户名查找
+find 目录 -size 20m		--按文件大小查找（+大于，-小于，没符号=）
+
+zip -r 压缩文件名 目录		--将目录下文件压缩成zip文件
+unzip 压缩文件名		--解压到当前目录
+
+tar -zcvf t.tar.gz 目录或多个文件	--压缩
+tar -zxvf 文件名			--解压到当前目录
+tar -zxvf 文件名 -C 目录		--解压到指定目录
+
+vim
+1.命令模式
+yy 5yy	复制
+p	粘贴
+dd 5dd	删除
+G	末行
+gg	首行
+
+2.插入模式
+
+3.末行模式
+:wq q q!
+/key	查找	n下一个
+:set nu/nonu	显示行号
+
+
+关机、重启、断开连接
+halt	--立即关机
+reboot	--重启
+sync	--同步内存数据到磁盘
+logout	--断开连接
+
+用户管理
+1.useradd -g 组名 用户名		--创建用户
+2.passwd test				--设置密码
+3.usermod -g 组名 用户名		--修改用户组
+4.userdel test				--删除用户但保留家目录
+5.userdel -r test			--删除用户并删除家目录
+6.id 用户名				--查看用户信息，所在组
+7.su - test				--切换用户，高权限向低权限切换不需要密码，反之则需要
+8.exit					--退出当前用户
+
+组管理
+1.groupadd 组名
+2.groupdel 组名
+
+cat /etc/group 		--查看用户组
+cat /etc/passwd 	--查看用户信息
+
+权限
+修改文件用户组
+1.chown 用户名 文件		--文件
+2.chown -R 用户名 目录 		--目录 -R递归
+3.chgrp 组名 文件
+4.chgrp -R 组名 目录
+
+修改文件或目录权限
+1.chmod u=rwx,g=r,o=r 文件或目录名	-r:4,-w:2,-x:1
+chmod 744 文件名或目录名
+
+2.chmod u-x,g+w,o+x 文件或目录名	-表示减去，+表示增加
+
+文件类型
+-普通文件
+-d目录
+-b硬盘
+-c字符文件（鼠标，键盘）
+-l 软链接
+
+定时任务
+crontab -e	--编辑定时任务
+crontab -l	--显示定时任务
+crontab -r	--终止定时任务
+
+例子：每天0时0分追加日期到date.txt文件
+1.touch date.txt
+2.vim mytask1.sh
+date >> date.txt
+3.chmod 744 mytask1.sh
+4.crontab -e
+0 0 * * * /root/mytask1.sh
+
+查看树状文件结构图
+tree
+yum install tree
+
+查看进程
+ps -aux | more
+ps -aux | grep sshd	--查看远程登录
+
+
+终止进程
+kill -9 id	--强制终止
+
+
+查看服务
+ll /etc/init.d
+
+
+查看已安装的软件、卸载
+1.rpm -qa | grep jdk
+2.rpm -e 名称
+3.rpm -e 名称 --nodeps
+
+yum list java-1.8*
+yum install java-1.8.0-openjdk* -y
+
+
+ps -ef|grep redis
+ls -l /proc/PID/cwd
+
+
+
+
+
+
+
+
+
