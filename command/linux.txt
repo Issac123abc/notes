@@ -161,6 +161,9 @@ yum install java-1.8.0-openjdk* -y
 ps -ef|grep redis
 ls -l /proc/PID/cwd
 
+passwd test	--test
+passwd		--root
+
 
 
 

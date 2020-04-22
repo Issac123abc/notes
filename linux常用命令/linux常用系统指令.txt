@@ -98,6 +98,7 @@ logout	--断开连接
 用户管理
 1.useradd -g 组名 用户名		--创建用户
 2.passwd test				--设置密码
+passwd					--root修改密码
 3.usermod -g 组名 用户名		--修改用户组
 4.userdel test				--删除用户但保留家目录
 5.userdel -r test			--删除用户并删除家目录
