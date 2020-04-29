@@ -8,6 +8,7 @@ pwd
 pwdx 17680 通过pid找到应用目录
 
 df -h
+top
 
 mkdir
 rmdir 

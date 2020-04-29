@@ -13,11 +13,31 @@ systemctl stop docker
 docker images
 docker ps
 docker ps -a
+--查看容器内资源
+docker stats 容器名
+--容器配置信息
+docker container inspect 容器名
 
 docker start container-name/container-id
 docker stop container-name/container-id
 docker rm container-id  #先停止
 docker rmi image-id
+
+#镜像
+--导出
+docker save -o /opt/nginx_test.tar 容器名
+--导入
+docker load -i /opt/nginx_test.tar
+
+#容器(应用+操作系统环境)
+--日志
+docker logs 容器id
+docker exec -it 容器名  bash
+
+--导出
+docker export -o opt/redis_test.tar redis(容器名)
+--导入
+docker import opt/redis_test.tar redis:tag(任意标签)
 
 
 docker run -p 6379:6379 --name redis -v /root/redis/conf/redis.conf:/docker/redis/redis.conf -v /root/redis/data:/docker/redis/data -d redis 
