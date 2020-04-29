@@ -5,6 +5,7 @@ logout
 ls	ls -a	ll
 
 pwd
+pwdx 17680 通过pid找到应用目录
 
 df -h
 
@@ -165,6 +166,7 @@ ls -l /proc/PID/cwd
 passwd test	--test
 passwd		--root
 
+systemctl status firewalld.service
 
 
 
