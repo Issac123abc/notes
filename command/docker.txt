@@ -35,7 +35,10 @@ docker load -i /opt/nginx_test.tar
 #容器(应用+操作系统环境)
 --日志
 docker logs 容器id
+--进入容器
 docker exec -it 容器名  bash
+--容器内安装ps命令
+apt-get update && apt-get install procps
 
 --导出
 docker export -o opt/redis_test.tar redis(容器名)
@@ -46,8 +49,6 @@ docker import opt/redis_test.tar redis:tag(任意标签)
 docker run -p 6379:6379 --name redis -v /root/redis/conf/redis.conf:/docker/redis/redis.conf -v /root/redis/data:/docker/redis/data -d redis redis-server /docker/redis/redis.conf --appendonly yes
 --查看启动日志
 docker logs redis
-
-netstat -lnpt
 
 
 #kafka

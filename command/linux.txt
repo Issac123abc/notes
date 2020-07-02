@@ -4,6 +4,16 @@ logout
 
 ls	ls -a	ll
 
+#系统
+systemctl status firewalld.service
+--已使用端口
+netstat -lnpt
+
+passwd test	--test
+passwd		--root
+
+which redis
+
 pwd
 pwdx 17680 通过pid找到应用目录
 
@@ -164,11 +174,14 @@ yum install java-1.8.0-openjdk* -y
 ps -ef|grep redis
 ls -l /proc/PID/cwd
 
+<<<<<<< HEAD
 passwd test	--test
 passwd		--root
 
 systemctl status firewalld.service
 netstat -lnpt
+=======
+>>>>>>> dc37f8e27a12854b4cb61481c26c6a22e953fa40
 
 
 
