@@ -1,0 +1,40 @@
+##查看表空间及文件位置
+select file_name,tablespace_name,bytes from dba_data_files;
+
+##扩展表空间
+ALTER TABLESPACE ICJD_DATA_THIRD ADD DATAFILE
+'/space2/ora_db/ICJD_DATA_THIRD3.ORA' SIZE 1G
+AUTOEXTEND ON NEXT 10M
+
+##执行计划
+explain plan for
+select * from table(dbms_xplan.display());
+
+##创建分区表并自动扩展
+create table T_CARNUM_RECORD_BAK (
+   F_ID   VARCHAR2(32)         primary key,
+   F_DEVICE_ID      VARCHAR2(32)         not null,
+   F_CAP_TIME           TIMESTAMP            not null,
+   F_DEVICE_CODE        VARCHAR2(60)         not null,
+   F_CREATE_TIME        TIMESTAMP    default sysdate,
+   F_CREATE_USERID      VARCHAR2(32),
+   F_HAS_FULLINDEX      NUMBER(8,0)          default 0,
+   F_CPHM               VARCHAR2(200)        not null,
+   F_CD                 VARCHAR2(60),
+   F_FX                 VARCHAR2(60),
+   F_CPLX               VARCHAR2(60),
+   F_CPSB               VARCHAR2(60),
+   F_GCSJ               TIMESTAMP,
+   F_CS                 VARCHAR2(60),
+   F_CPYS               VARCHAR2(60),
+   F_CLLX               VARCHAR2(60),
+   F_CLYSSQ             VARCHAR2(20),
+   F_CLYS               VARCHAR2(20),
+   F_CLPP               VARCHAR2(60),
+   F_CLZPP              VARCHAR2(60),
+   F_CLNK               VARCHAR2(10),
+   F_LONGITUDE          VARCHAR2(20),
+   F_LATITUDE           VARCHAR2(20),
+   F_URL                VARCHAR2(600)
+) TABLESPACE "ICJD_DATA_THIRD" PARTITION BY RANGE ("F_CAP_TIME") INTERVAL (NUMTODSINTERVAL(1,'day'))
+(PARTITION P_T_CR_20200401 VALUES LESS THAN (TO_TIMESTAMP('2020-04-01 00:00:00.000','yyyy-MM-dd hh24:mi:ss.ff')));
