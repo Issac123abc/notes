@@ -178,7 +178,7 @@ passwd test	--test
 passwd		--root
 
 systemctl status firewalld.service
-netstat -lnpt
+netstat -lnpt( | grep 1521)
 
 ##Õº–ŒΩÁ√Ê
 1. yum groupinstall "GNOME Desktop" "Graphical Administration Tools"
