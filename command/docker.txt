@@ -75,9 +75,9 @@ flush privileges;
 
 #fastdfs
 docker pull season/fastdfs
-docker run -ti -d --name trakcer -v /root/fastdfs/tracker/data:/docker/fastdfs/tracker/data --net=host season/fastdfs tracker
+docker run -it -d --name trakcer -v /var/fdfs/tracker:/var/fdfs --net=host season/fastdfs tracker
 netstat -aon | grep 22122
-docker run -tid --name storage -v /root/fastdfs/storage/data:/docker/fastdfs/storage/data -v /root/fastdfs/store_path:/docker/fastdfs/store_path --net=host -e TRACKER_SERVER:106.52.60.213:22122 -e GROUP_NAME=group1 season/fastdfs storage
+docker run -it -d --name storage -v /var/fdfs/storage:/var/fdfs --net=host -e TRACKER_SERVER:106.52.60.213:22122 -e GROUP_NAME=group1 season/fastdfs storage
 docker exec -it storage bash
 cd fdfs_conf
 docker cp storage:/fdfs_conf/storage.conf ~/	复制出来编辑

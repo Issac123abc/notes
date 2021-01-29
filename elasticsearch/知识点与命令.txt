@@ -1,0 +1,34 @@
+--索引操作
+
+
+--文档操作
+DELETE es_ic_books/IT/k96qHHIBnuyRiwQZvtw3
+POST es_ic_books/_delete_by_query
+{
+  "query":{
+    "term":{
+      "name": "elasticsearch"
+    }
+  }
+}
+
+PUT es_ic_books/IT/m96yHHIBnuyRiwQZkdyQ
+{
+  "name": "elasticsearch",
+  "author": "t2"
+}
+POST es_ic_books/_update_by_query
+{
+  "script": {
+    "inline": "ctx._source.author=params.author",
+    "lang": "painless",
+    "params": {
+      "author": "test"
+    }
+  },
+  "query": {
+    "term": {
+      "name": "elasticsearch"
+    }
+  }
+}
