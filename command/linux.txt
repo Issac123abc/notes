@@ -174,7 +174,17 @@ yum install java-1.8.0-openjdk* -y
 ps -ef|grep redis
 ls -l /proc/PID/cwd
 
+passwd test	--test
+passwd		--root
 
+systemctl status firewalld.service
+netstat -lnpt( | grep 1521)
+
+##图形界面
+1. yum groupinstall "GNOME Desktop" "Graphical Administration Tools"
+2.systemctl get-default
+3.systemctl set-default graphical.target/systemctl set-default multi-user.target
+4.重启
 
 
 
