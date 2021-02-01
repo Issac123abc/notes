@@ -22,16 +22,49 @@ reboot
 halt
 
 
-2. 权限
-2.1 chmod 777 -R 文件名/目录
+2. 用户与权限
+2.1 文件权限 chmod 777 -R 文件名/目录
+2.2 新增用户 useradd test
+2.3 设置密码 passwd test
+2.4 删除用户 userdel test
+2.5 用户配置文件 /etc/passwd
 
 
 
 3. 解压、压缩
-3.1 
+3.1 .tar/.tar.gz
+tar zxvf 文件名     -x  extract(提取)
+tar zcvf 压缩文件名 目录
+
+3.2 .gz
+gunzip 文件名
+gzip 压缩文件名 目录
+
+3.3 .zip
+unzip 文件名
+zip 压缩文件名 目录
+
+3.4 .rar
+unrar 文件名
+rar 压缩文件名 目录
+ 
 
 4. 查看、编辑文件
 
 5. 运行应用
 5.1 后台运行jar
 nohup java -jar xxx > ./logs/info.log &
+
+
+6. 软件安装
+6.1 yum 安装
+yum install 软件名称
+启动 systemctl start 软件名称
+
+6.2 rpm安装
+rpm -ivh xxx.rpm
+启动 systemctl start 软件名称
+
+6.3 源码安装
+需要编译、安装（make,make install）
+启动 bin目录下脚本
