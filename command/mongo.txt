@@ -1,0 +1,29 @@
+1.查看、创建、删除数据库
+show dbs、db
+use testdatabase
+db.dropDatabase()
+
+2.创建、删除集合
+db.createCollection("testcollection")
+db.testcollection.drop()
+
+3.文档的增删改查
+db.testcollection.insert({title: "MongoDB 教程', description: "MongoDB 是一个 Nosql 数据库"})
+db.testcollection.remove({"title":"MongoDB 教程"})
+db.testcollection.remove({})
+
+
+
+4.排序
+
+
+5.索引
+
+
+6.备份
+
+
+7.还原
+
+
+8.分片与副本
