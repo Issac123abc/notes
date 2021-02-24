@@ -24,7 +24,7 @@ docker rm container-id  #先停止
 docker rmi image-id
 
 --查看启动日志
-docker logs redis
+docker logs redis --tail -f
 
 #镜像
 --导出
@@ -46,9 +46,12 @@ docker export -o opt/redis_test.tar redis(容器名)
 docker import opt/redis_test.tar redis:tag(任意标签)
 
 
+--拷进与拷出文件
+
+
 docker run -p 6379:6379 --name redis -v /root/redis/conf/redis.conf:/docker/redis/redis.conf -v /root/redis/data:/docker/redis/data -d redis redis-server /docker/redis/redis.conf --appendonly yes
 --查看启动日志
-docker logs redis
+docker logs redis --tail -f
 
 
 #kafka
