@@ -47,7 +47,8 @@ docker import opt/redis_test.tar redis:tag(任意标签)
 
 
 --拷进与拷出文件
-
+复制到宿主机：docker cp omc_device-sevice_1:/home/backup  /home
+复制到容器内: docker cp /home/backup/ omc_device-service_1:/home/backup/
 
 docker run -p 6379:6379 --name redis -v /root/redis/conf/redis.conf:/docker/redis/redis.conf -v /root/redis/data:/docker/redis/data -d redis redis-server /docker/redis/redis.conf --appendonly yes
 --查看启动日志
