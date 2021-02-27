@@ -4,26 +4,37 @@ use testdatabase
 db.dropDatabase()
 
 2.创建、删除集合
-db.createCollection("testcollection")
-db.testcollection.drop()
+db.createCollection("col")
+db.col.drop()
 
 3.文档的增删改查
-db.testcollection.insert({title: "MongoDB 教程', description: "MongoDB 是一个 Nosql 数据库"})
-db.testcollection.remove({"title":"MongoDB 教程"})
-db.testcollection.remove({})
-
-
+db.col.insert({title: "MongoDB 教程', description: "MongoDB 是一个 Nosql 数据库"})
+db.col.remove({"title":"MongoDB 教程"})
+db.col.remove({})
+db.col.update({},{},{})
+查询：
+and--db.col.find({"name":"lisa","sex":0})
+or--db.col.find({$or:[{"name":"lisa"},{"sex":0}]})
+like--db.col.find({"name":"/lisa/"}) ##/^/,/$/
+gt,lt,gte,lte--db.col.find({"age":{$gt:18,$lt:28}})
+数量：
+db.col.count()
+db.col.find({}).count()
 
 4.排序
+db.col.find().sort({"age":1/-1})
+
+5.分页
+db.col.find().sort({}).limit(5).skip(0)
 
 
-5.索引
+6.索引
 
 
-6.备份
+7.备份
 
 
-7.还原
+8.还原
 
 
 8.分片与副本
