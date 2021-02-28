@@ -43,5 +43,10 @@ mongodump -h localhost:27017 -u root -p 123456 <-d dbname> -o /data/dump/
 进入docker后
 mongorestore -h localhost:27017 -u root -p 123456 <-d dbname> /data/dump/
 
+高级特性：
+1.查询分析
+db.col.find().explain()
 
-8.分片与副本
+2.MapReduce
+
+3.全文检索
