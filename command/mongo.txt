@@ -29,12 +29,19 @@ db.col.find().sort({}).limit(5).skip(0)
 
 
 6.索引
+创建：db.col.createIndexs({name:1,phone:-1},{background:true,unique:false,name:"name_phone"})  ##name非必选
+查看：db.col.getIndexes()
+删除：db.col.dropIndex("name_phone")
 
 
 7.备份
-
+进入docker后
+mongodump -h localhost:27017 -u root -p 123456 <-d dbname> -o /data/dump/
+生成两个文件：*.bson,*.metadata.json
 
 8.还原
+进入docker后
+mongorestore -h localhost:27017 -u root -p 123456 <-d dbname> /data/dump/
 
 
 8.分片与副本

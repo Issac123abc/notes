@@ -4,6 +4,14 @@ ip addr
 
 1.2 启动系统服务
 systemctl start/restart docker
+设置开机启动服务：
+1.2.1 vi /etc/rc.d/rc.local,在最后行插入
+systemctl start docker
+docker start mongodb
+
+1.2.2 修改权限
+chmod +x rc.local
+
 
 1.3 查看路径
 pwd,pwdx 进程id
