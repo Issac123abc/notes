@@ -1,6 +1,15 @@
 1. 系统指令
 1.1 查看ip
 ip addr
+1.2 绑定静态ip
+vi /etc/sysconfig/network-scripts/ifcfg-ens33
+BOOTPROTO=static
+IPADDR=192.168.33.131
+NETMASK=255.255.255.0
+GATEWAY=192.168.33.1
+
+重启network
+systemctl restart network
 
 1.2 启动系统服务
 systemctl start/restart docker
