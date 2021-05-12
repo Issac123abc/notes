@@ -12,6 +12,22 @@ cd redis/src 或 redis/bin
 ./redis-server redis.conf
 
 
+#myslq
+mysql bin目录
+#登录
+./mysql -h 127.0.0.1 -u root -p
+#导出表数据
+./mysqldump -h 127.0.0.1 -u root -p -t lbs LBS_AREA > /home/area.sql
+show databases;
+use lbs;
+select database();
+show tables；
+#查看注释
+select * from information_schema.columns where table_name='LBS_AREA';
+
+#表结构信息
+desc LBS_AREA;
+
 
 
 

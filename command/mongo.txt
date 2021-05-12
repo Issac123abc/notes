@@ -50,3 +50,21 @@ db.col.find().explain()
 2.MapReduce
 
 3.全文检索
+
+#连接mongos
+./mongo 127.0.0.1:27017/lbs -u root -p
+#mongodb 创建用户
+db.createUser({user:"skywin",pwd:"Pwdis123",roles:[{role:"dbOwner",db:"analysis"}]});
+#建表
+db.createCollection("orig_zm_record");
+#建立分片键
+db.orig_zm_record.ensureIndex({"dev_id":1});
+
+use admin;
+#分片库
+db.runCommand({enablesharing:"analysis"});
+#分片表
+db.runCommand({shardcollection:"analysis.orig_zm_record",key:{"dev_id":1}});
+#查看分片状态
+use analysis;
+db.orig_zm_record.stats();
